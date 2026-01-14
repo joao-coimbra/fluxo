@@ -1,0 +1,29 @@
+#!/bin/sh
+
+COMMIT_MSG_FILE=$1
+COMMIT_MSG=$(cat "$COMMIT_MSG_FILE")
+
+# Skip if message already has an emoji
+if echo "$COMMIT_MSG" | grep -qP '^\p{Emoji}'; then
+  exit 0
+fi
+
+# Add emoji based on commit type
+add_emoji() {
+  case "$1" in
+    feat*)     echo "✨ $1" ;;
+    fix*)      echo "🐛 $1" ;;
+    docs*)     echo "📚 $1" ;;
+    style*)    echo "💎 $1" ;;
+    refactor*) echo "♻️ $1" ;;
+    perf*)     echo "🚀 $1" ;;
+    test*)     echo "🧪 $1" ;;
+    build*)    echo "📦 $1" ;;
+    ci*)       echo "👷 $1" ;;
+    chore*)    echo "🔧 $1" ;;
+    revert*)   echo "⏪ $1" ;;
+    *)         echo "$1" ;;
+  esac
+}
+
+add_emoji "$COMMIT_MSG" > "$COMMIT_MSG_FILE"
