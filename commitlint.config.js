@@ -82,8 +82,7 @@ const promptConfig = {
         "What is the scope of this change (e.g. component or file name)",
     },
     subject: {
-      description:
-        "Write a short, imperative tense description of the change",
+      description: "Write a short, imperative tense description of the change",
     },
     body: {
       description: "Provide a longer description of the change",
