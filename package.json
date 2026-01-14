@@ -15,7 +15,9 @@
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
     "@commitlint/prompt-cli": "^20.3.1",
+    "@types/lodash-es": "^4.17.12",
     "conventional-changelog-conventionalcommits": "^9.1.0",
-    "husky": "^9.1.7"
+    "husky": "^9.1.7",
+    "lodash-es": "^4.17.22"
   }
 }
