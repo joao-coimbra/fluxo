@@ -6,7 +6,7 @@ This file provides guidance to Claude Code (claude.ai/code) when working with co
 
 Fluxo is a Bun-based monorepo with separate frontend and backend applications:
 - **apps/web** - React 19 + Vite frontend
-- **apps/api** - Elysia backend (see apps/api/CLAUDE.md for Bun-specific patterns)
+- **apps/api** - Elysia backend on Bun runtime
 
 ## Commands
 
@@ -20,12 +20,12 @@ bun install
 bun run dev:web    # Start frontend (Vite dev server)
 bun run dev:api    # Start backend
 
-# Frontend-specific (from root)
-bun --cwd apps/web build   # Build frontend
-bun --cwd apps/web lint    # Lint frontend
+# Build
+bun --cwd apps/web build
 
-# Backend (from root)
-bun --cwd apps/api run index.ts
+# Linting & Formatting (Ultracite/Biome)
+bun x ultracite check   # Check for issues
+bun x ultracite fix     # Auto-fix issues
 
 # Tests
 bun test                   # Run all tests
@@ -40,21 +40,30 @@ bun run commit
 **Monorepo Structure:**
 - Root package.json defines workspaces: `["apps/*"]`
 - Each app has its own package.json and TypeScript config
-- Shared devDependencies at root (commitlint, husky, TypeScript)
+- Shared devDependencies at root (commitlint, husky, Biome/Ultracite)
 
 **Frontend (apps/web):**
 - React 19 with Vite 7
 - Strict TypeScript with separate configs for app vs node
-- ESLint flat config with react-hooks and react-refresh plugins
 
 **Backend (apps/api):**
 - Elysia framework on Bun runtime
-- Very strict TypeScript (bundler mode, ESNext target)
-- Prefer Bun native APIs (see apps/api/CLAUDE.md)
+- Entry point: `src/server.ts`
+- Prefer Bun native APIs over Node equivalents
+
+## Code Standards
+
+This project uses Ultracite (Biome-based) for linting and formatting. See `.claude/ultracite.md` for detailed code standards including:
+- Type safety and explicitness guidelines
+- Modern JS/TS patterns (arrow functions, optional chaining, destructuring)
+- React/JSX best practices
+- Async/await patterns
+
+Run `bun x ultracite fix` before committing.
 
 ## Commit Convention
 
-Commits use conventional commits with emoji prefixes. The commitlint config parses emoji-prefixed messages:
+Commits use conventional commits with emoji prefixes:
 
 | Type     | Emoji | Description |
 |----------|-------|-------------|
