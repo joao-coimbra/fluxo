@@ -8,11 +8,13 @@
   "scripts": {
     "dev:web": "bun --cwd apps/web dev",
     "dev:api": "bun --cwd apps/api dev",
+    "commit": "commit",
     "prepare": "husky"
   },
   "devDependencies": {
     "@commitlint/cli": "^20.3.1",
     "@commitlint/config-conventional": "^20.3.1",
+    "@commitlint/prompt-cli": "^20.3.1",
     "husky": "^9.1.7"
   }
 }
