@@ -17,15 +17,15 @@ All commands use Bun. Never use npm, yarn, or pnpm.
 bun install
 
 # Development
-bun run dev:web    # Start frontend (Vite dev server)
-bun run dev:api    # Start backend
+bun run dev:web    # Start frontend (Vite on port 5173)
+bun run dev:api    # Start backend (Elysia on port 3333)
 
 # Build
-bun --cwd apps/web build
+bun --cwd apps/web build    # Runs tsc -b && vite build
 
 # Linting & Formatting (Ultracite/Biome)
+bun run fix             # Auto-fix issues (shortcut)
 bun x ultracite check   # Check for issues
-bun x ultracite fix     # Auto-fix issues
 
 # Tests
 bun test                   # Run all tests
@@ -43,8 +43,8 @@ bun run commit
 - Shared devDependencies at root (commitlint, husky, Biome/Ultracite)
 
 **Frontend (apps/web):**
-- React 19 with Vite 7
-- Strict TypeScript with separate configs for app vs node
+- React 19 with Vite
+- Strict TypeScript with separate configs for app vs node (uses project references)
 
 **Backend (apps/api):**
 - Elysia framework on Bun runtime
@@ -59,7 +59,7 @@ This project uses Ultracite (Biome-based) for linting and formatting. See `.clau
 - React/JSX best practices
 - Async/await patterns
 
-Run `bun x ultracite fix` before committing.
+Run `bun run fix` before committing. The project uses semicolons sparingly (`asNeeded` in biome.jsonc).
 
 ## Commit Convention
 
