@@ -45,7 +45,7 @@ const promptConfig = {
         perf: {
           description: "A code change that improves performance",
           title: "Performance Improvements",
-          emoji: "⚡ ",
+          emoji: "🚀 ",
         },
         test: {
           description: "Adding missing tests or correcting existing tests",

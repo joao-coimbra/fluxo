@@ -63,7 +63,7 @@ Commits use conventional commits with emoji prefixes. The commitlint config pars
 | docs     | 📝    | Documentation |
 | style    | 💄    | Formatting |
 | refactor | ♻️    | Code refactoring |
-| perf     | ⚡    | Performance |
+| perf     | 🚀    | Performance |
 | test     | ✅    | Tests |
 | build    | 📦    | Build system |
 | ci       | 👷    | CI/CD |
